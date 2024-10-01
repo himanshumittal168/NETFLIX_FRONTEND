@@ -22,7 +22,7 @@ const Signup = () => {
         }
 
         try {
-            const res = await fetch('https://netflix-backend-1-5s54.onrender.com/api/user/signup', {
+            const res = await fetch('https://netflix-backend-n3us.onrender.com/api/user/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

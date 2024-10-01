@@ -39,7 +39,7 @@ const TopMovies = () => {
       return;
     }
     try {
-      const response = await fetch('https://netflix-backend-1-5s54.onrender.com/api/favorites/createfavorites', {
+      const response = await fetch('https://netflix-backend-n3us.onrender.com/api/favorites/createfavorites', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

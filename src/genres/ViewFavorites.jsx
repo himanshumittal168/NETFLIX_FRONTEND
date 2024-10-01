@@ -7,7 +7,7 @@ const ViewFavorites = () => {
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const response = await fetch('https://netflix-backend-1-5s54.onrender.com/api/favorites/getfavorites', {
+        const response = await fetch('https://netflix-backend-n3us.onrender.com/api/favorites/getfavorites', {
           headers: {
             'email': email || '', 
           },
@@ -29,7 +29,7 @@ const ViewFavorites = () => {
 
   const removeFromFavorites = async (movieId) => {
     try {
-      const response = await fetch(`https://netflix-backend-1-5s54.onrender.com/api/favorites//deletefavorite/${movieId}`, {
+      const response = await fetch(`https://netflix-backend-n3us.onrender.com/api/favorites//deletefavorite/${movieId}`, {
         method: 'DELETE',
         headers: {
           'email': email || '',

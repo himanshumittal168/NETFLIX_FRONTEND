@@ -16,7 +16,7 @@ const Favorites = () => {
         return;
       }
 
-      const response = await fetch("https://netflix-backend-1-5s54.onrender.com/api/favorites/getfavorites", {
+      const response = await fetch("https://netflix-backend-n3us.onrender.com/api/favorites/getfavorites", {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",

@@ -42,7 +42,7 @@ const Login = () => {
     const handleEmailLogin = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch("https://netflix-backend-1-5s54.onrender.com/api/user/login", {
+            const res = await fetch("https://netflix-backend-n3us.onrender.com/api/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
