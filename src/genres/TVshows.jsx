@@ -14,7 +14,7 @@ const TVShows = () => {
   const getTvShows = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("http://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&api_key=9c869b656bbcb8317a0c240b21095641");
+      const response = await fetch("https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&api_key=9c869b656bbcb8317a0c240b21095641");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

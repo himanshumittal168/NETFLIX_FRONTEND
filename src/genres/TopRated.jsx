@@ -14,7 +14,7 @@ const TopMovies = () => {
   const getMovies = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("http://api.themoviedb.org/3/movie/top_rated?api_key=9c869b656bbcb8317a0c240b21095641");
+      const response = await fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=9c869b656bbcb8317a0c240b21095641");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
