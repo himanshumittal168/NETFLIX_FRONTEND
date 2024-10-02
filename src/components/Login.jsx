@@ -60,7 +60,6 @@ const Login = () => {
             navigate("/");
         } catch (err) {
             toast.error("Username or password is incorrect");
-            console.error(err);
             console.error("Error during login:", err);
         }
     };

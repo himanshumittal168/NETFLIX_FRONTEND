@@ -37,7 +37,6 @@ const Signup = () => {
             if (!res.ok) {
                 const errorData = await res.json();
                 console.error('Signup failed:', errorData.message);
-                setErrorMessage(errorData.message);
                 toast.error(errorData.message);
                 return;
             }
@@ -47,7 +46,6 @@ const Signup = () => {
 
         } catch (err) {
             console.error('Error during signup:', err);
-            setErrorMessage('An error occurred during signup. Please try again.');
             toast.error('An error occurred during signup');
         }
     };
