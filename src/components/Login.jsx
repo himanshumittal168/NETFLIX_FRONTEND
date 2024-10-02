@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Link, useNavigate } from "react-router-dom";
 import { toast, Toaster } from 'react-hot-toast';
@@ -7,10 +7,13 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false); 
+    const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false); // New loading state
 
     const handleGoogleLogin = useGoogleLogin({
         onSuccess: async (response) => {
+            if (loading) return;
+            setLoading(true);
             try {
                 const res = await fetch(
                     "https://www.googleapis.com/oauth2/v1/userinfo",
@@ -31,18 +34,22 @@ const Login = () => {
                 localStorage.setItem("username", name);
 
                 toast.success("Logged in successfully with Google!");
-                setTimeout(() => navigate("/"), 500);
+                navigate("/");
             } catch (err) {
                 toast.error("Google login failed!");
                 console.error(err);
+            } finally {
+                setLoading(false); 
             }
-        }
+        },
     });
 
     const handleEmailLogin = async (e) => {
         e.preventDefault();
+        if (loading) return;
+        setLoading(true);
         try {
-            const res = await fetch("https://netflix-backend-n3us.onrender.com/api/user/login", {
+            const res = await fetch("https://netflix-clone-1vh3.onrender.com/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -56,11 +63,13 @@ const Login = () => {
             localStorage.setItem("username", data.data.username);
             localStorage.setItem("email", data.data.email);
 
-            // toast.success("Login successful!");
+            toast.success("Login successful!");
             navigate("/");
         } catch (err) {
             toast.error("Username or password is incorrect");
-            console.error("Error during login:", err);
+            console.error(err);
+        } finally {
+            setLoading(false); // Reset loading state
         }
     };
 
@@ -90,7 +99,7 @@ const Login = () => {
                         />
                         <div className="relative">
                             <input
-                                type={showPassword ? "text" : "password"} 
+                                type={showPassword ? "text" : "password"}
                                 placeholder="Password"
                                 className='w-full bg-gray-700 text-white p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400'
                                 value={password}
@@ -113,9 +122,10 @@ const Login = () => {
                     <div className='flex flex-col gap-3'>
                         <button
                             type="submit"
+                            disabled={loading} // Disable button during loading
                             className="w-full bg-red-600 text-white rounded-md py-3 font-bold hover:bg-red-700 transition duration-300"
                         >
-                            Sign In
+                            {loading ? "Signing In..." : "Sign In"}
                         </button>
                         <div className="flex items-center justify-center text-gray-500">
                             <hr className="flex-grow border-gray-600" />
@@ -125,6 +135,7 @@ const Login = () => {
                         <button
                             type="button"
                             onClick={() => handleGoogleLogin()}
+                            disabled={loading} // Disable button during loading
                             className='bg-white text-black p-2 rounded-md hover:bg-gray-200 transition duration-300'
                         >
                             <div className='flex gap-2 justify-center'>
@@ -135,7 +146,7 @@ const Login = () => {
                     </div>
                 </form>
                 <div className='mt-10 text-gray-400'>
-                    <p>New to Netflix? <Link to={'/signup'} className='text-red-600 hover:underline'>Sign up</Link></p>
+                    <p>New to Netflix?  <Link to={'/signup'} className='text-red-600 hover:underline'>Sign up</Link></p>
                 </div>
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
