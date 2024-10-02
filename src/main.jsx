@@ -4,7 +4,7 @@ import './index.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 createRoot(document.getElementById('root')).render(
-  <GoogleOAuthProvider clientId='478427529114-m59uau1edtekkfu7a8nimmpdvqjrnvje.apps.googleusercontent.com'>
+  <GoogleOAuthProvider clientId='555607083776-6fs90i529j70p87bofke42h83hpp913r.apps.googleusercontent.com'>
     <App />
   </GoogleOAuthProvider>
 );

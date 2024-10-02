@@ -56,7 +56,7 @@ const Login = () => {
             localStorage.setItem("username", data.data.username);
             localStorage.setItem("email", data.data.email);
 
-            toast.success("Login successful!");
+            // toast.success("Login successful!");
             navigate("/");
         } catch (err) {
             toast.error("Username or password is incorrect");
