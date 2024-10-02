@@ -49,7 +49,7 @@ const Login = () => {
         if (loading) return;
         setLoading(true);
         try {
-            const res = await fetch("https://netflix-clone-1vh3.onrender.com/user/login", {
+            const res = await fetch("https://netflix-backend-n3us.onrender.com/api/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
