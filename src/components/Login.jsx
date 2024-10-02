@@ -57,7 +57,7 @@ const Login = () => {
             localStorage.setItem("email", data.data.email);
 
             toast.success("Login successful!");
-            setTimeout(() => navigate("/"), 500);
+            navigate("/");
         } catch (err) {
             toast.error("Username or password is incorrect");
             console.error(err);
