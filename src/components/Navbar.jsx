@@ -25,7 +25,9 @@ const Navbar = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("username");
     toast.success("Successfully signed out!");
-    navigate("/login");
+    if(!username) {
+      navigate("/login");
+    }
   };
 
   const toggleMenu = () => {
